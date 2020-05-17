@@ -1,0 +1,179 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>19ss_Web_Home</title>
+  <link href="src/CSS/nav.css" type="text/css" rel="stylesheet">
+  <link href="src/CSS/Home.css" type="text/css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
+  <link href="bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+  <script src="src/JavaScript/detection.js"></script>
+</head>
+<!--导航栏,navbar-inverse创建反色的导航栏-->
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <!--响应式窗口，在浏览器窗口不够大时变为下拉菜单,data-target用于指示要切换到哪一个元素-->
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <!--三个带有 class .icon-bar 的 <span> 创建所谓的汉堡按钮-->
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"><i class="fa fa-first-order fa-2x"></i></a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span> Home<span class="sr-only">(current)</span></a></li>
+        <li><a href="src/HTML/Browse.html"><span class="glyphicon glyphicon-align-justify"></span> Browse</a></li>
+        <li><a href="src/HTML/Search.html"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+      </ul>
+      <ul class="nav navbar-nav nav-pills navbar-right">
+        <li role="presentation" class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-user"></span> My Account <span class="caret"></span></a>
+          <!--下拉菜单的内容-->
+          <ul class="dropdown-menu">
+            <li><a href="src/HTML/Upload.html"><span class="glyphicon glyphicon-open"></span> Upload</a></li>
+            <li><a href="src/HTML/Photograph.html"><span class="glyphicon glyphicon-th"></span> My Photo</a></li>
+            <li><a href="src/HTML/Favourite.html"><span class="glyphicon glyphicon-heart"></span> My Favourite</a></li>
+            <li><a href="src/PHP/Logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="headline">
+  <img src="images/头图.jpg" width="100%">
+</div>
+
+<div class="container-fluid">
+<h2> 今日推荐 </h2>
+<!--缩略图,每行3个，小显示屏每行2个-->
+<div class="row">
+  <div class="display display0 col-xs-6 col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <a href="">
+        <div class="img">
+        </div>
+        <div class="caption">
+          <h4></h4>
+          <p></p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="display display1 col-xs-6 col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <a href="">
+        <div class="img">
+        </div>
+        <div class="caption">
+          <h4></h4>
+          <p></p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="display display2 col-xs-6 col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <a href="">
+        <div class="img">
+        </div>
+        <div class="caption">
+          <h4></h4>
+          <p></p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="display display3 col-xs-6 col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <a href="">
+        <div class="img">
+        </div>
+        <div class="caption">
+          <h4></h4>
+          <p></p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="display display4 col-xs-6 col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <a href="">
+        <div class="img">
+        </div>
+        <div class="caption">
+          <h4></h4>
+          <p></p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="display display5 col-xs-6 col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <a href="">
+        <div class="img">
+        </div>
+        <div class="caption">
+          <h4></h4>
+          <p></p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 页尾 -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-3">
+        <p><a>使用条款</a></p>
+        <p><a>隐私保护</a></p>
+        <p><a>Cookie</a></p>
+      </div>
+      <div class="col-xs-3">
+        <p><a>关于</a></p>
+        <p><a>联系我们</a></p>
+      </div>
+      <div class="col-xs-3">
+        <div>
+          <a href="https://im.qq.com/"><i class="fa fa-qq fa-2x"></i></a>&nbsp
+          <a href="https://store.steampowered.com/"><i class="fa fa-steam fa-2x"></i></a>
+        </div>
+        <div class="qq">
+          <a href="https://weixin.qq.com/"><i class="fa fa-wechat fa-2x"></i></a>&nbsp;
+          <a href="https://github.com/"><i class="fa fa-github fa-2x"></i></a>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <img src="images/wechat.png" width="85px"/>
+      </div>
+    </div>
+  </div>
+  <div id="copyrightRow">
+    <div class="container">
+      <div class="row">
+        <p class="copyright">Copyright &#169 2020 Webfundamental Dyingfish Alive. All Rights Reserved. 备案号：沪ICP备18307110072号</p>
+      </div>
+    </div>
+  </div>
+</footer>
+<a href="#top">
+  <div id="arrowup">
+    <i class="fa fa-arrow-up fa-2x"></i>
+  </div>
+</a>
+<div id="refresh">
+  <i class="fa fa-refresh fa-2x"></i>
+</div>
+</body>
+<script src="src/JavaScript/Homepage.js">
+</script>
+</html>

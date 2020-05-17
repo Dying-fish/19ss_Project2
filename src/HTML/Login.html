@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>19ss_Web_Login</title>
+<link href="../CSS/Account.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../../font-awesome/css/font-awesome.min.css">
+<link href="../../bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="../../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<main class="container-fluid">
+    <i class="fa fa-first-order fa-5x"></i>
+    <!--欢迎文字-->
+    <h2>欢迎来到雪灵灵粉丝团</h2>
+    <form role="form" method="post" action="../PHP/Login.php">
+        <fieldset>
+            <legend>登陆界面</legend>
+        </fieldset>
+        <div class="form-group">
+            <label for="User">用户名/邮箱：</label>
+            <input type="text" class="form-control" name="User" id="User" placeholder="请输入用户名或邮箱" required>
+        </div>
+        <div class="form-group">
+            <label for="password">密码：</label>
+            <input type="password" class="form-control" Name="password" id="password" placeholder="请输入密码" required>
+        </div>
+        <input type="submit" class="btn btn-success" value="登录">
+    </form>
+    <p>第一次访问？<a href="Signup.html">点击这里创建一个新帐号</a></p>
+</main>
+<footer>
+  <p>Copyright &#169 2020 Webfundamental Dyingfish Alive. All Rights Reserved. 备案号：沪ICP备18307110072号</p>
+</footer>
+</body>
+</html>

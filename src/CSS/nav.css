@@ -1,0 +1,23 @@
+
+nav li{
+    font-size: 12pt;
+    padding: 3px 8px;
+}
+.navbar-header a{
+    padding-top: 10px;
+}
+.navbar-nav li a:hover{
+    background-color: #FFFFCC;
+}
+.dropdown-menu li a:hover{
+    background-color: #eeeeee;
+}
+footer{
+    margin-top: 15px;
+    padding-left: 15px;
+}
+@media only screen and (max-width:1000px){
+    .navbar-header a{
+        padding-top: 7px;
+    }
+}

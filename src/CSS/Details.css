@@ -1,0 +1,25 @@
+.panel{
+    margin: 0 15px;
+}
+h2{
+    text-align: center;
+}
+img{
+    margin: 15px 0;
+    width: 100%;
+}
+.panel-heading{
+    font-size: 14pt;
+    font-weight: bold;
+}
+.btn{
+    width: 100%;
+}
+.list-group{
+    padding-left: 15px !important;
+}
+#Date{
+    float: right;
+    color: lightslategray;
+    font-size: small;
+}

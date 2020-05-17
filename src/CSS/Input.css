@@ -1,0 +1,20 @@
+textarea{
+    resize: none;
+}
+img{
+    min-height: 120px;
+    max-height: 600px;
+}
+button[type="submit"]{
+    font-weight: bold;
+    width: 150px;
+}
+form span{
+    color: red;
+}
+.search{
+    padding:0 15px;
+}
+.search input, .search textarea{
+    margin: 7px 0 10px;
+}
