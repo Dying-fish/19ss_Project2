@@ -5,9 +5,9 @@
 <title>19ss_Web_Signup</title>
 <link href="../CSS/Account.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="../../font-awesome/css/font-awesome.min.css">
-<link href="../../bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
-<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="../../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <main class="container-fluid">
@@ -20,7 +20,7 @@
         </fieldset>
         <div class="form-group">
             <label for="User">用户名：</label><span id="userWarn">*</span>
-            <input type="text" class="form-control" id="User" placeholder="请输入用户名" minlength="6" required>
+            <input type="text" class="form-control" name="User" id="User" placeholder="请输入用户名" minlength="4" required>
         </div>
         <div class="form-group">
             <label for="Email">邮箱：</label><span id="emailWarn">*</span>
@@ -31,7 +31,7 @@
             <input type="password" class="form-control" name="pass" id="pass" placeholder="请输入密码" minlength="8" required>
         </div>
         <div class="form-group">
-            <label for="confirm">密码：</label><span id="confirmWarn">*</span>
+            <label for="confirm">确认密码：</label><span id="confirmWarn">*</span>
             <input type="password" class="form-control" id="confirm" placeholder="请再次输入密码" minlength="8"  required>
         </div>
         <input type="submit" class="btn btn-success" value="注册">

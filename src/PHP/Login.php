@@ -2,35 +2,36 @@
 $servername = "localhost";
 $username = "root";
 $password = "Dying_fish233";
-$dbname = "project2";
+$dbname = "19ss_project2";
 // 创建连接
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 // Check connection
 if (!$conn) {
     die("连接失败: " . mysqli_connect_error());
 }
-$user = isset($_POST['User']) ? htmlspecialchars($_POST['User']) : '';
+$account = isset($_POST['account']) ? htmlspecialchars($_POST['account']) : '';
 $pass = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
 $url = "../HTML/Login.html";
+// binary 区分大小写
 $sql = "SELECT UID
         FROM traveluser
-        WHERE UserName ='{$user}' AND Pass = '{$pass}'
+        WHERE ( binary UserName ='{$account}' OR  binary Email = '{$account}') AND  binary Pass = '{$pass}'
         ";
 $result = mysqli_query($conn, $sql);
-if (mysqli_num_rows($result) > 0) {
+if (!$result) {
+    echo("用户名或密码错误");
+}
+else if (mysqli_num_rows($result) > 0) {
     // 输出数据
     $row = mysqli_fetch_assoc($result);
     session_start();
-    //  声明一个名为 admin 的变量，并赋空值。
+    //  设置用户登录状态
     $_SESSION["admin"] = true;
     $_SESSION["UID"]=$row["UID"];
     $url  =  "../../index.html";
     echo "您已成功登录，请稍等片刻";
 }
 else{
-    echo("用户名或密码错误");
-}
-if (!$result) {
     echo("用户名或密码错误");
 }
 mysqli_close($conn);

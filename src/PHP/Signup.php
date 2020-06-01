@@ -2,25 +2,29 @@
 $servername = "localhost";
 $username = "root";
 $password = "Dying_fish233";
-$dbname = "project2";
+$dbname = "19ss_project2";
 // 创建连接
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
-$url = "../HTML/Signup.html";
-$user = isset($_POST['Email']) ? htmlspecialchars($_POST['Email']) : '';
-$pass = isset($_POST['pass']) ? htmlspecialchars($_POST['pass']) : '';
 if (!$conn) {
     die("连接失败: " . mysqli_connect_error());
 }
-$sql = "SELECT COUNT(UID) FROM traveluser";
+$url = "../HTML/Signup.html";
+// 获取注册用信息
+$user = isset($_POST['User']) ? htmlspecialchars($_POST['User']) : '';
+$email = isset($_POST['Email']) ? htmlspecialchars($_POST['Email']) : '';
+$pass = isset($_POST['pass']) ? htmlspecialchars($_POST['pass']) : '';
+//检查是否存在重复注册
+$sql = "SELECT UID FROM traveluser WHERE Email = '{$email}'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
-$uid = $row["COUNT(UID)"]+1;
-if ($user==''||$pass=='') echo("Error发生");
+$row["UID"] = -1;
+if ($user==''||$email==''||$pass=='') echo("Error发生");
+else if($row["UID"]>=0) echo("您已注册过");
 else {
+    //注册
     $sql = "INSERT INTO traveluser
-            (UID, UserName,Pass, State) 
-            VALUES ('{$uid}','{$user}','{$pass}',1)
+            (Email,UserName,Pass, State) 
+            VALUES ('{$email}','{$user}','{$pass}',1)
         ";
     if ($conn->query($sql) === TRUE) {
         $url = "../HTML/Login.html";

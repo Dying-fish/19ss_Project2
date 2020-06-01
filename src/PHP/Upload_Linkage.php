@@ -9,29 +9,27 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
     die("连接失败: " . mysqli_connect_error());
 }
-$UID = 0;
-//  启动会话，这步必不可少
-session_start();
-//搜索该用户上传的图片
-$sql = "SELECT PATH,Title,Description,ImageID
-        FROM travelimage
-        WHERE UID ='{$_SESSION['UID']}' AND PATH IS NOT NULL
-        ";
+$country = isset($_GET['country']) ? htmlspecialchars($_GET['country']) : '';
+
+//设置Population的限制防止无用的城市数量过多
+$sql = "SELECT AsciiName,GeoNameID
+        FROM geocities
+        WHERE CountryCodeISO = '{$country}' AND Population>100000
+        ORDER BY AsciiName
+       ";
 $result = mysqli_query($conn, $sql);
 $arr = Array();
-if (mysqli_num_rows($result) > 0) {
-    // 输出数据
-    $count = 0;
-    while($row = mysqli_fetch_assoc($result)) {
-        $arr[$count++] = $row;
-    }
-    echo json_encode($arr);
-} else {
-    echo "NULL";
-}
 if (!$result) {
     printf("Error: %s\n", mysqli_error($conn));
     exit();
 }
+if (mysqli_num_rows($result) > 0) {
+    // 输出数据
+    $count = 0;
+    while ($row = mysqli_fetch_assoc($result)) {
+        $arr[$count++] = $row;
+    }
+}
+echo json_encode($arr);
 mysqli_close($conn);
 ?>

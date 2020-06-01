@@ -11,9 +11,6 @@
 .panel-body{
     border-top: 1px solid #ddd;
 }
-.display{
-    display: none;
-}
 .image{
     border-radius: 6px;
     margin: 15px;
@@ -46,7 +43,7 @@ p{
    -webkit-line-clamp: 4;
    overflow: hidden;
  }
-#Date{
+.Date{
     color: lightslategray;
     font-size: small;
 }

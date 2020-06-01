@@ -8,6 +8,6 @@ $url = "../../index.html"
     <meta   http-equiv = "refresh"   content ="1;  url = <?php echo $url;  ?>" >
 </head>
 <body>
-你已注销，请稍等片刻
+你已登出，请稍等片刻……
 </body>
 </html>

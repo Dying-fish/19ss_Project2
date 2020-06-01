@@ -1,6 +1,25 @@
+// 展示图片的函数
+function display(arr){
+    for(let i = 0;i<arr.length;i++){
+        let select = ".display-"+i;
+        $(select).show();   //显示图片
+        $(select+" div.img").css("background-image","url(\"images/travel-images/"+arr[i]["PATH"]+"\")");    //设置图片的路径
+        $(select+" h4").text(arr[i]["Title"]);  //图片标题
+        if (!arr[i]["Description"]) //图片简介
+            $(select+" p").text("This guy is lazy so he write nothing.");
+        else
+            $(select+" p").text(arr[i]["Description"]);
+        $(select).click(function () {   //点击后跳转至相应详情页
+            let url = 'src/HTML/Details.html?ImageID='+arr[i]["ImageID"];
+            $(location).attr("href",url);
+            return false;
+        })
+    }
+}
 $(document).ready(function(){
-    $.post("./src/PHP/detection.php",function (status) {
-        if (status=="游客"){
+    $(".display").hide();   //初始化，先全部隐藏
+    $.post("./src/PHP/Detection.php",function (status) {    //判断浏览者是否登录
+        if (status == "Visitor"){
             $(".dropdown-toggle").text("登录");
             $(".dropdown-toggle").click(function () {
                 $(location).attr("href","./src/HTML/Login.html");
@@ -9,39 +28,14 @@ $(document).ready(function(){
             $(".dropdown-menu").hide();
         }
     })
-    $.get("src/PHP/init-Homepage.php",function(data){
-        let arr = eval(data);
-        for(let i = 0;i<arr.length;i++){
-            let select = ".display"+i;
-            $(select).css("display","block");
-            $(select+" div.img").css("background-image","url(\"images/travel-images/large/"+arr[i]["PATH"]+"\")");
-            $(select+" h4").html(arr[i]["Title"]);
-            if (!arr[i]["Description"])
-                $(select+" p").html("This guy is lazy so he write nothing.");
-            else
-                $(select+" p").html(arr[i]["Description"]);
-        }
+    $.get("src/PHP/Homepage_Init.php",function(data){   //初始化今日推荐
+        let arr = JSON.parse(data);
+        display(arr);
     })
-    $("#refresh").click(function () {
-        $.get("src/PHP/refresh.php",function(data){
-            let arr = eval(data);
-            for(let i = 0;i<arr.length;i++){
-                let select = ".display"+i;
-                $(select).css("display","block");
-                $(select+" div.img").css("background-image","url(\"images/travel-images/large/"+arr[i]["PATH"]+"\")");
-                $(select+" h4").html(arr[i]["Title"]);
-                if (!arr[i]["Description"])
-                    $(select+" p").html("This guy is lazy so he write nothing.");
-                else
-                    $(select+" p").html(arr[i]["Description"]);
-            }
+    $("#refresh").click(function () {   //刷新
+        $.get("src/PHP/Homepage_Refresh.php",function(data) {
+            let arr = JSON.parse(data);
+            display(arr);
         })
-    })
-    $(".img").click(function () {
-        let str = $(this).css("background-image");
-        let start = str.lastIndexOf("/")+1;
-        let url = 'src/HTML/Details.html?url='+str.substring(start,str.length-6);
-        window.location.href = url;
-        return false;
     })
 });

@@ -9,17 +9,15 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
     die("连接失败: " . mysqli_connect_error());
 }
-
 session_start();
 $ImageID = isset($_POST['ImageID']) ? htmlspecialchars($_POST['ImageID']) : '';
 // 防止错误
-if ($ImageID==''||$_SESSION["UID"]<=0) echo("Error");
+if ($ImageID==''||!isset($_SESSION["UID"])) echo("Error");
 else {
     $uid = $_SESSION["UID"];
-    //在收藏库写入用户id与图片id
-    $sql = "INSERT INTO travelimagefavor
-            (UID,ImageID) 
-            VALUES ('{$uid}','{$ImageID}')
+    //删除收藏记录
+    $sql = "DELETE FROM travelimagefavor
+        WHERE ImageID = '{$ImageID}' AND UID ='{$uid}'
         ";
     if ($conn->query($sql) === TRUE) {
         echo "Success";

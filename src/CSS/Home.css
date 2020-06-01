@@ -16,9 +16,6 @@ h2{
      background-position:center;
      background-size: cover;
  }
-.display{
-    display: none;
-}
 .display p{
     display: -webkit-box;
     -webkit-box-orient: vertical;
