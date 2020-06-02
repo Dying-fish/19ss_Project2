@@ -7,7 +7,7 @@ $(document).ready(function () {
         $("div.display h2").remove();
         // 按标题搜索
         if ($("input[type=radio]:checked").val()=='title'){
-            $.get("../PHP/Search.php",
+            $.post("../PHP/Search.php",
                 {
                     title:$("input[type=text]").val(),
                     info:''
@@ -15,32 +15,32 @@ $(document).ready(function () {
                 function (data) {
                     // 未搜索到相关照片时
                     if (data=='NULL') {
-                        $add = $("<center><h2>很抱歉，没有查到相关照片</h2></center>");
-                        $("div.display").append($add);
+                        let add = $("<center><h2>很抱歉，没有查到相关照片</h2></center>");
+                        $("div.display").append(add);
                     }
                     // 展示照片
                     else{
-                        let arr = JSON.parse(data);
+                        let arr = eval(data);
                         display(arr);
                     }
                 });
         }
         // 按简介搜索
         else if ($("input[type=radio]:checked").val()=='info'){
-            $.get("../PHP/Search.php",
+            $.post("../PHP/Search.php",
                 {
                     title:'',
-                    info:$("textarea").val(),
+                    info:$("textarea").val().trim(),
                 },
                 function (data) {
                     // 未搜索到相关照片时
                     if (data=='NULL') {
-                        $add = $("<center><h2>很抱歉，没有查到相关照片</h2></center>");
-                        $("div.display").append($add);
+                        let add = $("<center><h2>很抱歉，没有查到相关照片</h2></center>");
+                        $("div.display").append(add);
                     }
                     // 展示照片
                     else{
-                        let arr = JSON.parse(data);
+                        let arr = eval(data);
                         display(arr);
                     }
                 });

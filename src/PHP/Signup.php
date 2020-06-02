@@ -17,9 +17,8 @@ $pass = isset($_POST['pass']) ? htmlspecialchars($_POST['pass']) : '';
 $sql = "SELECT UID FROM traveluser WHERE Email = '{$email}'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
-$row["UID"] = -1;
 if ($user==''||$email==''||$pass=='') echo("Error发生");
-else if($row["UID"]>=0) echo("您已注册过");
+else if($row["UID"]) echo("您已注册过,请登录");
 else {
     //注册
     $sql = "INSERT INTO traveluser

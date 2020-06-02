@@ -31,6 +31,7 @@ function display(array){
         if (x == 0) return;     //如果是第一页则不变
         else paging(x - 1, array);  //向前翻页
     });
+    let i;
     for (i = 0; i < array.length; i++) {
         let thumb = "div.thumb-" + i;
         if (i < 12) {
@@ -59,10 +60,9 @@ function display(array){
 }
 //  筛选搜索功能
 function browseSearch(x,y,z) {  //根据主题，国家城市进行选择
-    let i = 0;
     $("div.thumb").hide();
     $(".pagination").empty();
-    $("div.show h2").remove();
+    $("div#show h2").remove();
     $("#show").show(); //显示搜索结果
     $.get("../PHP/Browse_Filter.php",
         {
@@ -134,9 +134,10 @@ $(document).ready(function () {
         }
     )
     $("form.title-search").submit(function () { //标题搜索
-        $(".pagination").empty();   //清空翻页键等
-        $(".thumb").hide();
-        $.get("../PHP/Search.php",
+        $("div.thumb").hide();
+        $(".pagination").empty(); //清空翻页键等
+        $("div#show h2").remove();
+        $.post("../PHP/Search.php",
             {
                 title:$("input[type=text]").val(),
                 info:""
@@ -146,7 +147,7 @@ $(document).ready(function () {
                 if (data=="NULL"){      //未搜索到照片
                     $("div#show").append("<center><h2>很抱歉，未搜索到相关照片</h2></center>");
                 }else {
-                    let array = JSON.parse(data);
+                    let array = eval(data);
                     display(array);
                 }
             });

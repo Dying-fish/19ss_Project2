@@ -46,13 +46,13 @@ $(document).ready(function(){
             else {
                 submit = true;
                 $("#confirmWarn").css("color","red");
-                $("#confirmWarn").text("×");
+                $("#confirmWarn").text("密码不一致");
             }
             $("#confirm").change(function () {
-                if($("#pass").val()!= $("#confirm").val()){
+                if($("#pass").val()!= $("#confirm").val()||!confirm){
                     submit = true;
                     $("#confirmWarn").css("color","red");
-                    $("#confirmWarn").text("×");
+                    $("#confirmWarn").text("密码不一致");
                 }
                 else{
                     $("#confirmWarn").text("✔");

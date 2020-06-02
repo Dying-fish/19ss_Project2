@@ -1,7 +1,7 @@
 <?php
 session_start();
 session_destroy();
-$url = "../../index.html"
+$url = "../HTML/Login.html"
 ?>
 <html>
 <head>

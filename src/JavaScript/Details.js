@@ -14,7 +14,7 @@ $(document).ready(function () {
             if (!result["Description"]) //图片简介
                 $(".panel-body p").text("This guy is lazy so he write nothing.");
             else
-                $(".panel-body p").text(result["Description"]);
+                $(".panel-body p#word").text(result["Description"]);
             if (!result["CityName"])
                 $(".cityName").text("城市：");
             else

@@ -117,6 +117,7 @@ $(document).ready(function () {
                     linkage(arr['CityCode']);
                 }
                 else linkage();
+                submit = false;
             })
     }
 })
