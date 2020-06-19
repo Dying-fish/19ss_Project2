@@ -14,7 +14,16 @@ $country = isset($_GET['country']) ? htmlspecialchars($_GET['country']) : '';
 //设置Population的限制防止无用的城市数量过多
 $sql = "SELECT AsciiName,GeoNameID
         FROM geocities
-        WHERE CountryCodeISO = '{$country}' AND Population>100000
+        WHERE GeoNameID IN(
+        SELECT T.GeoNameID
+        FROM (
+            SELECT GeoNameID
+            FROM geocities
+            WHERE CountryCodeISO = '{$country}'
+            ORDER BY Population DESC 
+            LIMIT 100
+            ) AS T
+        ) AND Population > 0
         ORDER BY AsciiName
        ";
 $result = mysqli_query($conn, $sql);
