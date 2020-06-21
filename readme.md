@@ -8,6 +8,8 @@ github提交地址：https://github.com/Dying-fish/19ss_Project2
 
 网页部署地址：http://39.101.164.194/index.html
 
+静态网页：https://dying-fish.github.io/19ss_Project2/
+
 
 
 ## 项目完成情况
@@ -66,7 +68,7 @@ github提交地址：https://github.com/Dying-fish/19ss_Project2
 
 翻页后会显示当前位置，切换图片
 
-![Browse-pageButton](C:\Users\simon\Downloads\Browse-pageButton.png)
+![Browse-pageButton](images\screenshots\Browse-pageButton.png)
 
 
 
