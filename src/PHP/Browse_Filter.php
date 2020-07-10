@@ -26,6 +26,7 @@ if ($country!=''){
 if ($city!=''){
     $sql = $sql." AND CityCode = '{$city}'";
 }
+$sql = $sql." LIMIT 80";
 $result = mysqli_query($conn, $sql);
 if (!$result) {
     echo "NULL";

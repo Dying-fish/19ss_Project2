@@ -34,7 +34,7 @@ $(document).ready(function(){
     })
     $("#refresh").click(function () {   //刷新
         $.get("src/PHP/Homepage_Refresh.php",function(data) {
-            let arr = JSON.parse(data);
+            let arr = eval(data);
             display(arr);
         })
     })

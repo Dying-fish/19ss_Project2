@@ -16,10 +16,10 @@ if (!$conn) {
 $sql = "SELECT DISTINCT PATH,Title,Description,ImageID
         FROM travelimage
         WHERE PATH IS NOT NULL
-        LIMIT 60
         ";
-if($title!='') $sql = $sql." AND Title LIKE '%{$title}%'";
-if ($info!='') $sql = $sql." AND Description LIKE '%{$info}%'";
+if($title != '') $sql = $sql." AND Title LIKE '%{$title}%'";
+if ($info != '') $sql = $sql." AND Description LIKE '%{$info}%'";
+$sql = $sql."LIMIT 80";
 $result = mysqli_query($conn, $sql);
 if (!$result) {
     echo "NULL";

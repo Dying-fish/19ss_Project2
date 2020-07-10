@@ -15,7 +15,7 @@ $title = isset($_POST['image-title']) ? htmlspecialchars($_POST['image-title']) 
 $info = isset($_POST['image-information']) ? htmlspecialchars($_POST['image-information']) : '';
 $content = isset($_POST['content']) ? htmlspecialchars($_POST['content']) : '';
 $country = isset($_POST['country']) ? htmlspecialchars($_POST['country']) : '';
-$city = isset($_POST['city']) ? htmlspecialchars($_POST['city']) : '';
+$city = isset($_POST['city']) ? htmlspecialchars($_POST['city']) : 'NULL';
 $path = "../../images/travel-images/";
 $uid = $_SESSION["UID"];
 
@@ -24,7 +24,7 @@ if ($_FILES["file"]["error"] > 0) {
 }
 else {
     // 判断当前目录下是否存在该文件
-    if (file_exists(" ../../images/travel-images/large/" . $_FILES["file"]["name"]))
+    if (file_exists($path . $_FILES["file"]["name"]))
     {
         echo " 文件已经存在."."<br>";
     }
@@ -35,24 +35,16 @@ else {
     }
     $filename = $_FILES["file"]["name"];
     //往数据库中插入记录
-    if($city!='') {
-        $sql = "INSERT INTO travelimage
-                (Title, Description, CityCode, CountryCodeISO, UID, PATH, Content)
-                VALUES('{$title}','{$info}','{$city}','{$country}','{$uid}','{$filename}','{$content}')
-                ";
+    $sql = "INSERT INTO travelimage
+            (Title, Description, CityCode, CountryCodeISO, UID, PATH, Content)
+            VALUES ('{$title}','{$info}','{$city}','{$country}','{$uid}','{$filename}','{$content}')
+            ";
+    if ($conn->query($sql) === TRUE) {
+        $url = "../HTML/Photograph.html";
+        echo "正在跳转";
+    }else{
+        echo "Error发生";
     }
-    else{
-        $sql = "INSERT INTO travelimage
-                (Title, Description, CityCode, CountryCodeISO, UID, PATH, Content)
-                VALUES('{$title}','{$info}',NULL,'{$country}','{$uid}','{$filename}','{$content}')
-                ";
-        }
-        if ($conn->query($sql) === TRUE) {
-            $url = "../HTML/Photograph.html";
-            echo "正在跳转";
-        }else{
-            echo "Error发生";
-        }
 }
 
 mysqli_close($conn);

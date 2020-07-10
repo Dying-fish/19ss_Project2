@@ -25,10 +25,9 @@ $(document).ready(function () {
         $(location).attr("href",url);
     });
     $(".delete").click(function () { //点击后删除相应图片
-        let ImageID = $(this).attr("value");
         $.post("../PHP/Photograph_Delete.php",
             {
-                ImageID:ImageID
+                ImageID: $(this).attr("value")
             },
             function (data) {
                 if (data=='Success'){

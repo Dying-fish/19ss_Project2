@@ -140,15 +140,19 @@ $(document).ready(function () {
         $.post("../PHP/Search.php",
             {
                 title:$("input[type=text]").val(),
-                info:""
             },
             function(data) {
                 $("#show").show();
                 if (data=="NULL"){      //未搜索到照片
                     $("div#show").append("<center><h2>很抱歉，未搜索到相关照片</h2></center>");
                 }else {
+                    data = data || 'ERROR';
+                    if (data=="ERROR"){      //部署到服务器端会出现问题
+                        $("div#show").append("<center><h2>请输入查询内容</h2></center>");
+                    }else {
                     let array = eval(data);
                     display(array);
+                    }
                 }
             });
         return false;
